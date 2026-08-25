@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import "./globals.css"
+import UserSync from '@/components/UserSync'
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
     
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
        <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}>
+     <UserSync/>
       {children}
       </body>
     </html>
