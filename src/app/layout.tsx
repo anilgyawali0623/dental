@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ClerkProvider, Show, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import "./globals.css"
+import { Toaster } from "sonner"
 import UserSync from '@/components/UserSync'
 import TanStackProvider from '@/components/providers/TanStackProvider'
 const geistSans = Geist({
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <TanStackProvider>
 
-     <ClerkProvider
+      <ClerkProvider
       // appearance={{
       //   variables: {
       //     colorPrimary: "#e78a53",
@@ -37,16 +38,17 @@ export default function RootLayout({
       //     colorInputBackground: "#f3f4f6",
       //   },
       // }}
-    >
+      >
 
-    
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-       <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}>
-     <UserSync/>
-      {children}
-      </body>
-    </html>
-    </ClerkProvider>
-        </TanStackProvider>
+
+        <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+          <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}>
+            <UserSync />
+            <Toaster />
+            {children}
+          </body>
+        </html>
+      </ClerkProvider>
+    </TanStackProvider>
   )
 }
